@@ -1,25 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
-int input(char *s,int length);
+/**
+ * main - prints line using getline
+ *
+ * Return: 0 on success
+ */
 
-int main()
+int main(void)
 {
-	char *buffer;
-	size_t bufsize = 32;
+	char *buffer = NULL;
+	size_t bufsize = 0;
 	size_t characters;
 
-	buffer = (char *)malloc(bufsize * sizeof(char));
-	if( buffer == NULL)
-	{
-		perror("Unable to allocate buffer");
-		exit(1);
-	}
+	write(STDOUT_FILENO, "$ ", 2);
+	characters = getline(&buffer, &bufsize, stdin);
+	write(1, buffer, bufsize);
+	free(buffer);
 
-	printf("Type something: ");
-	characters = getline(&buffer,&bufsize,stdin);
-	printf("%zu characters were read.\n",characters);
-	printf("%s",buffer);
-
-	return(0);
+	return (0);
 }
