@@ -16,7 +16,7 @@ int main(void)
 	write(STDOUT_FILENO, "$ ", 2);
 	characters = getline(&buffer, &bufsize, stdin);
 
-	token = strtok(buffer," ");
+	token = strtok(buffer," \n");
 	while (token != NULL)
 	{
 		write(STDOUT_FILENO, token, strlen(token));

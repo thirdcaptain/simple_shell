@@ -11,15 +11,17 @@
 char **ret_array(char *string)
 {
 	int i = 0;
-	char *array[2];
+	char **array;
 	char *token;
 
+	array = malloc(sizeof(char *) * 3);
 	token = strtok(string," ");
 	while (token != NULL)
 	{
-		write(STDOUT_FILENO, token, strlen(token));
+/*		write(STDOUT_FILENO, token, strlen(token));
 		write(STDOUT_FILENO, "\n", 1);
-		array[i] = token;
+*/		array[i] = token;
+		i++;
 		token = strtok(NULL, " ");
 	}
 	return (array);
@@ -32,11 +34,14 @@ int main(void)
 	size_t characters;
 
 	char *token;
-	int i;
-	char *array[2];
+	int i, j = 0;
+	char **array;
 
 	write(STDOUT_FILENO, "$ ", 2);
 	characters = getline(&buffer, &bufsize, stdin);
+	while (*(buffer + j) != '\n')
+		j++;
+	*(buffer + j) ='\0';
 
 /*
 	token = strtok(buffer," ");
@@ -57,7 +62,7 @@ int main(void)
 
 	for (i = 0; i < 2; i++)
 	{
-		printf("%s", array[i]);
+		printf("%s\n", array[i]);
 	}
 
 	free(buffer);
