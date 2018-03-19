@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <errno.h>
+#include <sys/wait.h>
+#include <sys/types.h>
 
 /**
  * main - prints line using getline
@@ -12,29 +15,38 @@ int main(void)
 {
 	char *buffer = NULL;
 	size_t bufsize = 0;
-	size_t characters;
-	int status;
-	int fork_ret;
+	size_t characters = 0;
+	int status = 0;
+	pid_t fork_ret = 0;
 	char *args[50];
+	int j = 0;
 
-	while (status != EOF)
+	while (1)
 	{
 		write(STDOUT_FILENO, "$ ", 2);		
 		characters = getline(&buffer, &bufsize, stdin);
+
+		while (*(buffer + j) != '\n')
+                		j++;
+		*(buffer + j) ='\0';
+
 		write(1, buffer, bufsize);
-		args[0] = malloc(characters * sizeof(char));
-		args[0] = buffer;	
+		args[0] = buffer;
+		args[1] = NULL;		
 		fork_ret = fork();
+		printf("I am argv[0] : %s\n", args[0]);
 		if (fork_ret < 0)
 		{	perror("Fork failed\n");
 			exit(1);
 		}
-		if (fork_ret ==0)
+		if (fork_ret == 0)
 		{
-			 execve(args[0],args, NULL);
+			printf("Before execve\n");
+			execve(args[0], args, NULL);
+			printf("After execve :)\n");
 		}
-		free(buffer);
 		wait(&status);
 	}
+	free(buffer);
 	return (0);
 }
