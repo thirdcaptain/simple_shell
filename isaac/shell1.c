@@ -23,18 +23,18 @@ int main(void)
 
 	while (1)
 	{
-		write(STDOUT_FILENO, "$ ", 2);		
+		buffer = NULL;
+		bufsize = 0;
+		write(STDOUT_FILENO, "$ ", 2);
 		characters = getline(&buffer, &bufsize, stdin);
 
 		while (*(buffer + j) != '\n')
-                		j++;
+               		j++;
 		*(buffer + j) ='\0';
 
-		write(1, buffer, bufsize);
 		args[0] = buffer;
-		args[1] = NULL;		
+		args[1] = NULL;
 		fork_ret = fork();
-		printf("I am argv[0] : %s\n", args[0]);
 		if (fork_ret < 0)
 		{	perror("Fork failed\n");
 			exit(1);
@@ -46,7 +46,7 @@ int main(void)
 			printf("After execve :)\n");
 		}
 		wait(&status);
+		free(buffer);
 	}
-	free(buffer);
 	return (0);
 }
