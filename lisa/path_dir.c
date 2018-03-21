@@ -1,3 +1,4 @@
+#include <string.h>
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
@@ -44,27 +45,35 @@ char *_getenv(const char *name)
         return (str);
 }
 
-char *print_dir(char *str)
+char **print_dir(char *str)
 {
 	int i = 0;
+	char **array;
+	char *token;
 
-	while (str[i] != '\0')
+	array = malloc(sizeof(char *) * 10);
+	token = strtok(str, ":");
+	while (token != NULL)
 	{
-		if (str[i] == ':')
-		{
-			str[i] = '\n';
-		}
+		array[i] = token;
 		i++;
+		token = strtok(NULL, ":");
 	}
-	return (str);
+	return (array);
 }
+
 int main(void)
 {
+	int i = 0;
         char *str;
-	char *str2;
+	char **str2;
 
         str = _getenv("PATH");
 	str2 = print_dir(str);
-        printf("%s\n", str2);
+	for (i = 0; str2 != NULL; i++)
+	{
+		printf("%s", str2[i]);
+	}
+	free(str);
 	return (0);
 }
