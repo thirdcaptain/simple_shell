@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 extern char **environ;
 
@@ -12,12 +13,10 @@ char *_getenv(const char *name)
 	{
 		i = 0;
 		j = 0;
-		while (name[i] != '\0' && *environ[j] != '=')
+		while (name[i] != '\0' && (*environ)[j] != '=')
 		{
-			if (name[i] == *environ[j])
+			if (name[i] == (*environ)[j])
 			{
-				printf("%c\n", name[i]);
-				printf("%c\n", *environ[j]);
 				i++;
 				j++;
 			}
@@ -26,24 +25,30 @@ char *_getenv(const char *name)
 				break;
 			}
 		}
-		*environ++;
+		if ((*environ)[j] == '=' && name[i] == '\0')
+			break;	
+		(*environ)++;
 	}
-	printf("%s\n", *environ);
 
-	*environ++;
-	while (*environ[j] != '\0')
+	j++;
+	str = malloc(sizeof(char) * 1024);
+	if (str == NULL)
+		return (NULL);
+	 while ((*environ)[j] != '\0')
 	{
-		str[k] = *environ[j];
+		str[k] = (*environ)[j];
 		j++;
 		k++;
 	}
-	printf("%s", str);
+	str[k] = '\0';
 	return (str);
-
 }
 
 int main(void)
 {
-	_getenv("PATH");
+	char *str;
+
+	str = _getenv("PATH");
+	printf("%s\n", str);
 	return (0);
 }
