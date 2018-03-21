@@ -27,7 +27,7 @@ int main(void)
 		bufsize = 0;
 		write(STDOUT_FILENO, "$ ", 2);
 		characters = getline(&buffer, &bufsize, stdin);
-
+		printf("%lu\n", characters);
 		while (*(buffer + j) != '\n')
                		j++;
 		*(buffer + j) ='\0';
