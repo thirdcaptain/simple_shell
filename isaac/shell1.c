@@ -25,12 +25,19 @@ int main(void)
 	{
 		buffer = NULL;
 		bufsize = 0;
+		j = 0;
 		write(STDOUT_FILENO, "$ ", 2);
 		characters = getline(&buffer, &bufsize, stdin);
-		printf("%lu\n", characters);
+	
+		 if (buffer == NULL)
+                        printf("it's null");
+		/* printf("%lu\n", characters); */
 		while (*(buffer + j) != '\n')
                		j++;
 		*(buffer + j) ='\0';
+		
+		if (buffer == NULL)
+			printf("it's null");
 
 		args[0] = buffer;
 		args[1] = NULL;
@@ -41,12 +48,22 @@ int main(void)
 		}
 		if (fork_ret == 0)
 		{
-			printf("Before execve\n");
+			/* printf("Before execve\n"); */
+			if (args[0] == NULL)
+				printf("it's null");	
+			else
+				printf("%s\n", args[0]);
+			printf("%s\n", args[0]);
 			execve(args[0], args, NULL);
-			printf("After execve :)\n");
+			printf("After execve :)\n"); 
 		}
-		wait(&status);
-		free(buffer);
+		else
+		{
+			wait(&status);
+			if (buffer == NULL)
+				printf("It's null");
+			free(buffer);
+		}
 	}
 	return (0);
 }
