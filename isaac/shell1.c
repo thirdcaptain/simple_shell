@@ -23,11 +23,12 @@ int main(void)
 
 	while (1)
 	{
+
 		buffer = NULL;
 		bufsize = 0;
 		write(STDOUT_FILENO, "$ ", 2);
 		characters = getline(&buffer, &bufsize, stdin);
-		printf("%lu\n", characters);
+/*		printf("%lu\n", characters);*/
 		while (*(buffer + j) != '\n')
                		j++;
 		*(buffer + j) ='\0';
@@ -36,7 +37,8 @@ int main(void)
 		args[1] = NULL;
 		fork_ret = fork();
 		if (fork_ret < 0)
-		{	perror("Fork failed\n");
+		{
+			perror("Fork failed\n");
 			exit(1);
 		}
 		if (fork_ret == 0)
@@ -47,6 +49,8 @@ int main(void)
 		}
 		wait(&status);
 		free(buffer);
+		printf("I'm free");
 	}
+
 	return (0);
 }
