@@ -65,8 +65,8 @@ int main(int ac, char **argv)
 					exit(1);
 				}
                         execve(args[0], args, NULL);
-			printf("%s", program);
-			perror("");
+/*			printf("%s", program);*/
+			perror(argv[0]);
 			}
                 }
                 else
