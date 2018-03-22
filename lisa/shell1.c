@@ -11,7 +11,7 @@
  * Return: 0 on success
  */
 
-int main(void)
+int main(int ac, char **argv)
 {
         char *buffer = NULL;
         size_t bufsize = 0;
@@ -20,7 +20,9 @@ int main(void)
         pid_t fork_ret = 0;
         char *args[50];
         int j = 0;
+	char *program;
 
+	program = argv[0];
         while (1)
         {
                 buffer = NULL;
@@ -28,8 +30,12 @@ int main(void)
                 j = 0;
                 write(STDOUT_FILENO, "$ ", 2);
                 characters = getline(&buffer, &bufsize, stdin);
-
-                 if (buffer == NULL)
+		if (characters == EOF)
+		{
+			free(buffer);
+			exit(1);
+		}
+		if (buffer == NULL)
                         printf("it's null");
                 /* printf("%lu\n", characters); */
                 while (*(buffer + j) != '\n')
@@ -52,19 +58,22 @@ int main(void)
                         if (args[0] == NULL)
  				printf("it's null");
                         else
-                                printf("%s\n", args[0]);
-                        printf("%s\n", args[0]);
+			{
+				if (characters == EOF)
+				{
+					free(buffer);
+					exit(1);
+				}
                         execve(args[0], args, NULL);
-                        printf("After execve :)\n");
+			printf("%s", program);
+			perror("");
+			}
                 }
                 else
                 {
                         wait(&status);
-                        if (buffer == NULL)
-                                printf("It's null");
                         free(buffer);
                 }
         }
         return (0);
 }
-                                     
