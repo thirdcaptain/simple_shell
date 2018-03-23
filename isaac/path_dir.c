@@ -3,6 +3,10 @@
 #include <unistd.h>
 #include <stdlib.h>
 
+/*
+ * path_dir - prints directories of path
+ */
+
 extern char **environ;
 
 char *_getenv(const char *name)
@@ -18,7 +22,7 @@ char *_getenv(const char *name)
                 {
                         if (name[i] == (*environ)[j])
                         {
-                                i++;
+				i++;
                                 j++;
                         }
                         else
@@ -30,7 +34,6 @@ char *_getenv(const char *name)
                         break;
                 (*environ)++;
         }
-
         j++;
         str = malloc(sizeof(char) * 1024);
         if (str == NULL)
@@ -51,7 +54,7 @@ char **print_dir(char *str)
 	char **array;
 	char *token;
 
-	array = malloc(sizeof(char *) * 10);
+	array = malloc(sizeof(char *) * 20);
 	token = strtok(str, ":");
 	while (token != NULL)
 	{
@@ -59,6 +62,7 @@ char **print_dir(char *str)
 		i++;
 		token = strtok(NULL, ":");
 	}
+	array[i + 1] == NULL;
 	return (array);
 }
 
@@ -69,10 +73,11 @@ int main(void)
 	char **str2;
 
         str = _getenv("PATH");
+	printf("%s\n", str);
 	str2 = print_dir(str);
-	for (i = 0; str2 != NULL; i++)
+	for (i = 0; str2[i] != NULL; i++)
 	{
-		printf("%s", str2[i]);
+		printf("%s\n", str2[i]);
 	}
 	free(str);
 	return (0);
