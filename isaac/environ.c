@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/**
+* prints environment line by line with string
+*/
 extern char **environ;
 
 int main (void)
