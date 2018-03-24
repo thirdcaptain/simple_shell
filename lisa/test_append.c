@@ -9,9 +9,9 @@ char *strings(char **path, char *name)
         while (name[namelen] != '\0')
                 namelen++;
 
-/*        while (path[j] != NULL)
+        while (*path)
         {
-*/
+
                 i = 0;
                 j = 0;
                 pathlen = 0;
@@ -39,12 +39,12 @@ char *strings(char **path, char *name)
                         i++;
                 }
                 tmp[i + 1] = '\0';
-		/* path[j]++; */
-		return (tmp);
-       /* }
-        printf("%s\n", tmp);
+		printf("%s\n", tmp); 
+		path++;
+        }
+ /*       printf("%s\n", tmp); */
         return (tmp);
-*/
+
 }
 
 int main(void)
