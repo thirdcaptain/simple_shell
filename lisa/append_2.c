@@ -39,7 +39,7 @@ char *append(char *path, char *name)
         
 	return (tmp);
 }
-
+/*
 int main(void)
 {
         char *str;
@@ -51,4 +51,4 @@ int main(void)
 
         return (0);
 }
-
+*/

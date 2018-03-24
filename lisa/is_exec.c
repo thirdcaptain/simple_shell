@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#include <sys/types.h>
 
 char *append(char *path, char *name)
 {
@@ -44,20 +47,23 @@ char *append(char *path, char *name)
 char *is_exec(char **path, char *name)
 {
 	char *str;
+	int ret_stat;
 
 	while (*path)
 	{
 		str = append(*path, name);
-		printf("%s\n", str);
-		path++;
+		if (access(str, F_OK) != -1)
+			return (str);
+		else
+			path++;
 	}
-	return (str);
+	return ("File doesn't exist or it hit null");
 }
 
 int main(void)
 {
 	char *path[] = {"/bin", "/tmp", NULL};
-	char *name = "ls";
+	char *name = "pwd";
 	char *str;
 
 	str = is_exec(path, name);
