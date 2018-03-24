@@ -56,7 +56,7 @@ char **print_dir(char *str)
         char *token;
 
         array = malloc(sizeof(char *) * 20);
-	if (array = NULL)
+	if (array == NULL)
 		return NULL;
         token = strtok(str, ":");
         while (token != NULL)
@@ -64,8 +64,8 @@ char **print_dir(char *str)
                 array[i] = token;
 		i++;
                 token = strtok(NULL, ":");
-        }
-        array[i + 1] = NULL;
+	}
+/*      array[i + 1] = NULL; */
         return (array);
 }
 
