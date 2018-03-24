@@ -51,7 +51,7 @@ char **print_dir(char *str)
 	char **array;
 	char *token;
 
-	array = malloc(sizeof(char *) * 10);
+	array = malloc(sizeof(char *) * 20);
 	token = strtok(str, ":");
 	while (token != NULL)
 	{
@@ -59,6 +59,7 @@ char **print_dir(char *str)
 		i++;
 		token = strtok(NULL, ":");
 	}
+	array[i + 1] = NULL;
 	return (array);
 }
 
@@ -69,10 +70,11 @@ int main(void)
 	char **str2;
 
         str = _getenv("PATH");
+	printf("%s\n", str);
 	str2 = print_dir(str);
-	for (i = 0; str2 != NULL; i++)
+	for (i = 0; str2[i] != NULL; i++)
 	{
-		printf("%s", str2[i]);
+		printf("%s\n", str2[i]);
 	}
 	free(str);
 	return (0);
