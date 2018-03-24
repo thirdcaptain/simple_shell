@@ -62,7 +62,7 @@ char **print_dir(char *str)
 		i++;
 		token = strtok(NULL, ":");
 	}
-	array[i + 1] == NULL;
+/*	array[i + 1] = NULL;*/
 	return (array);
 }
 

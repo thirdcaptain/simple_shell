@@ -116,6 +116,8 @@ char *is_exec(char **path, char *name)
         while (*path)
         {
                 str = append(*path, name);
+		if (access(name, F_OK) != -1)
+			return(name);
                 if (access(str, F_OK) != -1)
                         return (str);
                 else
@@ -123,6 +125,26 @@ char *is_exec(char **path, char *name)
         }
         return ("File doesn't exist or it hit null");
 }
+
+/*
+ * is_buffer_exec - checks if buffer is executable
+
+
+char *is_buffer_exec(char **path, char *name)
+{
+        int ret_stat;
+
+        while (*path)
+        {
+                if (access(name, F_OK) != -1)
+                        return (name);
+                else
+                        path++;
+        }
+        return ("File doesn't exist or it hit null");
+}
+*/
+
 
 /**
  * main - prints line using getline
