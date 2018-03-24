@@ -3,6 +3,31 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+
+/**                                                                             * _strdup - creates a duplicate of a string                                    * @str:string to be duplicated                                                 *                                                                              * Return: Pointer to duplicate of string                                       */
+
+char *_strdup(char *str)
+{
+        int str_length = 0;
+        char *dup_string;
+        int i;
+
+        if (str == NULL)
+                return (NULL);
+        for (i = 0; str[i] != '\0'; i++)
+        {
+                str_length++;
+        }
+        dup_string = malloc(str_length * (sizeof(char)) + 1);
+        if (dup_string == NULL)
+                return (NULL);
+        for (i = 0; i < str_length; i++)
+        {
+                dup_string[i] = str[i];
+        }
+        return (dup_string);
+}
+
 /**
  * count number of tokens
  */
@@ -16,6 +41,7 @@ int token_count(char *str)
 	while (token != NULL)
 	{
 		count++;
+		printf("token count: %d\n", count);
 		token = strtok(NULL, " ");
 	}
 	return (count);
@@ -35,7 +61,8 @@ char **ret_array(char *string)
 	char *token;
 
 	num_token = token_count(string);
-	array = malloc(sizeof(char *) * num_token);
+	array = malloc((sizeof(char *) * num_token) + 1);
+	printf("ret_array num_token: %d\n", num_token);
 	token = strtok(string," ");
 	while (token != NULL)
 	{
@@ -67,7 +94,7 @@ int main(void)
 	while (*(buffer + j) != '\n')
 		j++;
 	*(buffer + j) ='\0';
-
+	printf("%s\n",buffer);
 /*
 	token = strtok(buffer," ");
 	while (token != NULL)
@@ -86,7 +113,7 @@ int main(void)
 	num_tokens = token_count(buffer);
 	array = ret_array(buffer);
 	printf("%d\n", num_tokens);
-	for (i = 0; i < num_tokens - 1; i++)
+	for (i = 0; i < 2; i++)
 	{
 		printf("%s\n", array[i]);
 	}
