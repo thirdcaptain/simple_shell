@@ -4,7 +4,12 @@
 #include <unistd.h>
 
 
-/**                                                                             * _strdup - creates a duplicate of a string                                    * @str:string to be duplicated                                                 *                                                                              * Return: Pointer to duplicate of string                                       */
+/*
+ * _strdup - creates a duplicate of a string
+ * @str: string to be duplicated
+ *
+ * Return: Pointer to duplicate of string
+ */
 
 char *_strdup(char *str)
 {
@@ -36,12 +41,14 @@ int token_count(char *str)
 {
 	int count = 0;
 	char *token;
+	char *duplicate;
 
-	token = strtok(str, " ");
+	duplicate = _strdup(str);
+
+	token = strtok(duplicate, " ");
 	while (token != NULL)
 	{
 		count++;
-		printf("token count: %d\n", count);
 		token = strtok(NULL, " ");
 	}
 	return (count);
@@ -62,7 +69,6 @@ char **ret_array(char *string)
 
 	num_token = token_count(string);
 	array = malloc((sizeof(char *) * num_token) + 1);
-	printf("ret_array num_token: %d\n", num_token);
 	token = strtok(string," ");
 	while (token != NULL)
 	{
@@ -94,7 +100,6 @@ int main(void)
 	while (*(buffer + j) != '\n')
 		j++;
 	*(buffer + j) ='\0';
-	printf("%s\n",buffer);
 /*
 	token = strtok(buffer," ");
 	while (token != NULL)
@@ -112,8 +117,7 @@ int main(void)
 
 	num_tokens = token_count(buffer);
 	array = ret_array(buffer);
-	printf("%d\n", num_tokens);
-	for (i = 0; i < 2; i++)
+	for (i = 0; i < num_tokens; i++)
 	{
 		printf("%s\n", array[i]);
 	}
