@@ -17,5 +17,8 @@ char **print_dir(char *str);
 char *append(char *path, char *name);
 char *is_exec(char **path, char *name);
 int _strcmp(char *s1, char *s2);
+char *_strdup(char *str);
+int token_count(char *str);
+char **ret_array(char *string);
 
 #endif
