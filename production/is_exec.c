@@ -17,4 +17,3 @@ char *is_exec(char **path, char *name)
         }
         return ("File doesn't exist or it hit null");
 }
-
