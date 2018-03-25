@@ -16,8 +16,6 @@ char *_getenv(const char *name);
 char **print_dir(char *str);
 char *append(char *path, char *name);
 char *is_exec(char **path, char *name);
-
-
-
+int _strcmp(char *s1, char *s2);
 
 #endif

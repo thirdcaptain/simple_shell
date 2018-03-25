@@ -5,6 +5,7 @@
  *
  * Return: 0 on success
  */
+extern char **environ;
 
 int main(int ac, char **argv)
 {
@@ -41,10 +42,19 @@ int main(int ac, char **argv)
                 while (*(buffer + j) != '\n')
                         j++;
                 *(buffer + j) ='\0';
-
-                if (buffer == NULL)
-                        printf("it's null");
-
+		
+		if (_strcmp(buffer, "exit") == 0)
+		{
+			exit(1);
+		}
+		if (_strcmp(buffer, "env") == 0)
+		{
+			while (*environ)
+			{
+                		printf("%s\n", *environ);
+                		*environ++;
+        		}
+		}
                 args[0] = buffer;
 		args[1] = NULL;
 		filename = is_exec(path_dirs, buffer);
