@@ -45,9 +45,7 @@ char **ret_array(char *string)
 	token = strtok(string, " ");
 	while (token != NULL)
 	{
-/*		write(STDOUT_FILENO, token, strlen(token));
-		write(STDOUT_FILENO, "\n", 1);
-*/		array[i] = token;
+		array[i] = token;
 		i++;
 		token = strtok(NULL, " ");
 	}
