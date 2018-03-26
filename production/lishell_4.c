@@ -78,7 +78,6 @@ int main(int ac, char **argv)
 		filename = NULL;
 		free(args);
 		free(buffer);
-
         }
         return (0);
 }
