@@ -67,4 +67,4 @@ Currently, the hsh shell doesn't account for updates to the environment, conditi
 It does, however account for options and the two built-in commands listed above.
 
 .SH AUTHORS
-Isaac Wong, Lisa Olson
+Lisa Olson, Isaac Wong
