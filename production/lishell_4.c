@@ -19,10 +19,11 @@ int main(int __attribute__((unused))ac, char **argv, char **env)
 	char **args;
 	char *filename;
 
-	path = _getenv("PATH");
-	path_dirs = print_dir(path);
 	while (1)
 	{
+		path = _getenv("PATH");
+		path_dirs = print_dir(path);
+
 		buffer = NULL;
 		args = NULL;
 		bufsize = 0;
@@ -31,6 +32,7 @@ int main(int __attribute__((unused))ac, char **argv, char **env)
 		characters = getline(&buffer, &bufsize, stdin);
 		if (characters == EOF)
 		{
+			free(path);
 			free(buffer);
 			printf("\n");
 			exit(1);
@@ -43,6 +45,7 @@ int main(int __attribute__((unused))ac, char **argv, char **env)
 		filename = is_exec(path_dirs, buffer);
 		fork_execute(filename, args, argv[0]);
 
+		free(path);
 		free(args);
 		free(buffer);
 	}
