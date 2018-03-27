@@ -12,6 +12,8 @@ char *is_exec(char **path, char *name)
 	char *str;
 	int ret_stat;
 
+	if (name[0] == '\0')
+		return (name);
 	while (*path)
 	{
 		str = append(*path, name);

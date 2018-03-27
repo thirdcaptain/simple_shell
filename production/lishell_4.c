@@ -1,10 +1,11 @@
 #include "header.h"
 
 /**
- * main - prints line using getline
+ * main - shell
  *
  * Return: 0 on success
  */
+
 extern char **environ;
 
 int main(int ac, char **argv)
@@ -19,6 +20,7 @@ int main(int ac, char **argv)
         char **args;
         int j = 0;
 	char *filename;
+	int example;
 
 	path = _getenv("PATH");
 	path_dirs = print_dir(path);
@@ -39,17 +41,20 @@ int main(int ac, char **argv)
                         printf("\n");
                         exit(1);
                 }
-                if (buffer == NULL)
+/*              if (buffer == NULL)
                         printf("it's null");
                 while (*(buffer + j) != '\n')
                         j++;
                 *(buffer + j) ='\0';
+*/
+		buffer = built_in(buffer);
 
-		if (_strcmp(buffer, "exit") == 0)
+		example = _strcmp(buffer, "exit");
+		if (_strcmp(buffer, "exit") == 0 && buffer[0] != '\0')
 		{
-			exit(1);
+			exit(0);
 		}
-		if (_strcmp(buffer, "env") == 0)
+		if (_strcmp(buffer, "env") == 0 && buffer[0] != '\0')
 		{
 			while (*environ)
 			{
@@ -67,15 +72,16 @@ int main(int ac, char **argv)
                 }
                 if (fork_ret == 0)
                 {
-			if (execve(filename, args, NULL) == -1)
-				perror(argv[0]);
-			exit(1);
+		       if (*filename == '\0')
+		       {
+			       exit(0);
+		       }
+		       if (execve(filename, args, NULL) == -1)
+			       perror(argv[0]);
+		       exit(0);
                 }
                 else
-                {
                         wait(&status);
-                }
-		filename = NULL;
 		free(args);
 		free(buffer);
         }

@@ -20,5 +20,6 @@ int _strcmp(char *s1, char *s2);
 char *_strdup(char *str);
 int token_count(char *str);
 char **ret_array(char *string);
+char *built_in(char *input);
 
 #endif
