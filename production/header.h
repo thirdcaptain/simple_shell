@@ -22,5 +22,6 @@ int token_count(char *str);
 char **ret_array(char *string);
 char *built_in(char *input, char **environment);
 void fork_execute(char *program, char **parameters, char *root_program);
+int dir_count(char *str);
 
 #endif
