@@ -10,14 +10,13 @@
 
 char *append(char *path, char *name)
 {
-	int namelen = 0, pathlen = 0, i = 0, j = 0, k = 0, lengths = 0;
+	int namelen = 0, pathlen = 0, i = 0, k = 0, lengths = 0;
 	char *tmp;
 
 	while (name[namelen] != '\0')
 		namelen++;
 
 	i = 0;
-	j = 0;
 	pathlen = 0;
 
 	while (path[pathlen] != '\0')
