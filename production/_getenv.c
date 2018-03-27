@@ -8,7 +8,7 @@
 */
 char *_getenv(const char *name)
 {
-	int i = 0, j = 0, k = 0;
+	int i = 0, j = 0, k = 0, m = 0;
 	char *str;
 
 	while (*environ)
@@ -32,8 +32,15 @@ char *_getenv(const char *name)
 		(*environ)++;
 	}
 
+	m = j;
+	while ((*environ)[m] != '\0')
+	{
+		m++;
+	}
+	m -= j;
+
 	j++;
-	str = malloc(sizeof(char) * 1024);
+	str = malloc(sizeof(char) * m + 1);
 	if (str == NULL)
 		return (NULL);
 	while ((*environ)[j] != '\0')
