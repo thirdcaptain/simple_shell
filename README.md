@@ -51,6 +51,8 @@ drwxrwxr-x 2 vagrant vagrant  4096 Mar 28 07:18 .
 -rw-rw-r-- 1 vagrant vagrant   507 Mar 26 20:27 _strdup.c  
 drwxrwxr-x 7 vagrant vagrant  4096 Mar 26 20:23 ..  
 -rw-rw-r-- 1 vagrant vagrant   225 Mar 26 20:23 .gitignore  
+$ pwd  
+/home/vagrant/simple_shell  
 $  
 ```
 
