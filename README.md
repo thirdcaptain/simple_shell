@@ -28,7 +28,14 @@ The goal for this project was to build a UNIX command line interpreter that can 
 ## How to Compile
 ``` gcc -Wall -Werror -Wextra -pedantic *.c -o hsh ```
 
-## Examples
+### Built-ins
+| Command | Description |
+| ------------- |:-------------:|
+| env | prints the environment |
+| exit | exits with status 0 |
+| ctrl-d | exits with status 0 |
+
+### Examples
 ``` ./hsh  
 $ ls -alt  
 total 96  
@@ -75,8 +82,8 @@ $ exit
 vagrant@vagrant-ubuntu-trusty-64:~/simple_shell$
 ```
 
-### Notes
+#### Notes
 Our hsh shell does not account for updates to the environment, conditional expressions, command expansion, arithmetic evaluation, functions, aliases, redirection, or parameters.
 
-### Authors
+#### Authors
 Isaac Wong, Lisa Olson
