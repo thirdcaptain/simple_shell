@@ -1,0 +1,70 @@
+.TH hsh 1 "28 March 2018" "1" "Shell Manual"
+.SH NAME
+hsh - Holberton SHell
+
+The hsh shell echoes the functionality of the GNU Bourne-Again SHell
+.SH SYNOPSIS
+.B hsh 
+[options] [file]
+
+.SH DESCRIPTION
+.B Hsh 
+is an sh-compatible command language interpreter that executes commands read from the standard input or from a file. 
+
+.SH ENVIRONMENT
+.RS 3
+When a program is invoked it is given an array of strings called the \fIenvironment\fR.  This is a list of name-value pairs, of the form name=value.
+.RE
+
+.SH EXIT STATUS
+.RS 3
+For the shell's purpose, a command which exits with a zero exit status has succeeded. An exit status of zero indicates success. A non-zero exit status indicates failure.
+
+The Shell builtin command \fBexit\fR returns a status of 0 (true) if successful, and non-zero (false) if an error occurs while they execute.
+.RE
+.SH SHELL BUILTIN COMMANDS
+.RS 1
+Unless otherwise noted, each builtin command documented in this section as accepting options preceded by \fB-\fR accepts \fB--\fR to signify the end of the options.
+.RE
+
+.RS 3
+.B env
+.RE
+.RS 8
+Prints out the environment
+.RE
+.RS 3
+.B exit
+.RE
+.RE
+.RS 8
+Cause the shell to exit with a status of 1. 
+.RE
+
+.SH PROMPTING
+.RS 3
+When executing interactively, \fBhsh\fR displays the primary prompt \fBPS1\fR when it is ready to read a command.
+
+.RE
+
+.SH SEE ALSO
+.RS 3
+\fIBash Reference Manual\fR, Brian Fox and Chet Ramey
+
+\fIsh(1)\fR
+.RE
+.SH FILES
+.RS 3
+\fI/simple_shell/hsh\fR
+.RE
+.RS 8
+The \fBhsh \fR executable
+.RE
+
+.SH NOTES
+Currently, the hsh shell doesn't account for updates to the environment, conditional expressions, command expansion, arithmetic evaluation, functions, aliases, redirection, or parameters.
+
+It does, however account for options and the two built-in commands listed above.
+
+.SH AUTHORS
+Lisa Olson, Isaac Wong
