@@ -12,6 +12,7 @@
 
 extern char **environ;
 
+int _strlen(char *str); 
 char *_getenv(const char *name);
 char **print_dir(char *str);
 char *append(char *path, char *name);

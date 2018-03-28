@@ -34,7 +34,7 @@ int main(int __attribute__((unused))ac, char **argv, char **env)
 		{
 			free(path);
 			free(buffer);
-			printf("\n");
+			write(STDOUT_FILENO, "\n", 1);
 			exit(1);
 		}
 

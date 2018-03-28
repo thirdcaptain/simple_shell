@@ -10,16 +10,14 @@
 
 char *built_in(char *input, char **environment)
 {
-	int i = 0;
-	int k = 0;
+	int i = 0, k = 0;
+	size_t length = 0;
 
 	if (input == NULL)
 	{
 		perror("Invalid Input");
 		exit(0);
 	}
-
-	/*Remove newline from input*/
 	while (*(input + i) != '\n')
 		i++;
 	*(input + i) = '\0';
@@ -31,8 +29,10 @@ char *built_in(char *input, char **environment)
 	if (_strcmp(input, "env") == 0 && input[0] != '\0')
 	{
 		while (*(environment + k) != NULL)
-		{
-			printf("%s\n", *(environment + k));
+		{	
+			length = _strlen(*(environment + k));
+			write(STDOUT_FILENO, *(environment + k), length);
+			write(STDOUT_FILENO, "\n", 1);
 			k++;
 		}
 	}
