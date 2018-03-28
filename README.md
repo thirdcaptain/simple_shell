@@ -53,7 +53,26 @@ drwxrwxr-x 7 vagrant vagrant  4096 Mar 26 20:23 ..
 -rw-rw-r-- 1 vagrant vagrant   225 Mar 26 20:23 .gitignore  
 $ pwd  
 /home/vagrant/simple_shell  
-$  
+$ env  
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin  
+TERM=xterm-256color  
+SHELL=/bin/bash  
+SSH_CLIENT=10.0.2.2 59569 22  
+SSH_TTY=/dev/pts/0  
+USER=vagrant  
+MAIL=/var/mail/vagrant  
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin  
+PWD=/home/vagrant/shell_prep/simple_shell/production  
+LANG=en_US.UTF-8  
+SHLVL=1  
+HOME=/home/vagrant  
+LOGNAME=vagrant  
+SSH_CONNECTION=10.0.2.2 59569 10.0.2.15 22  
+XDG_RUNTIME_DIR=/run/user/1000  
+_=./hsh  
+OLDPWD=/home/vagrant/shell_prep/simple_shell  
+$ exit  
+vagrant@vagrant-ubuntu-trusty-64:~/simple_shell$
 ```
 
 ### Notes
