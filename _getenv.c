@@ -23,22 +23,16 @@ char *_getenv(const char *name)
 				j++;
 			}
 			else
-		{
 				break;
-		}
 		}
 		if ((*environ)[j] == '=' && name[i] == '\0')
 			break;
 		(*environ)++;
 	}
-
 	m = j;
 	while ((*environ)[m] != '\0')
-	{
 		m++;
-	}
 	m -= j;
-
 	j++;
 	str = malloc(sizeof(char) * m + 1);
 	if (str == NULL)

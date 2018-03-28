@@ -9,20 +9,20 @@
 
 int dir_count(char *str)
 {
-        int count = 0;
-        char *token;
-        char *duplicate;
+	int count = 0;
+	char *token;
+	char *duplicate;
 
-        duplicate = _strdup(str);
+	duplicate = _strdup(str);
 
-        token = strtok(duplicate, ":");
-        while (token != NULL)
-        {
-                count++;
-                token = strtok(NULL, ":");
-        }
-        free(duplicate);
-        return (count);
+	token = strtok(duplicate, ":");
+	while (token != NULL)
+	{
+		count++;
+		token = strtok(NULL, ":");
+	}
+	free(duplicate);
+	return (count);
 }
 
 /**
