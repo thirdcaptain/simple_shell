@@ -33,7 +33,7 @@ char *built_in(char *input, char **environment)
 		a++;
 		j++;
 	}
-	
+	newstr[a] = '\0';
 
 	if (_strcmp(newstr, "exit") == 0 && newstr[0] != '\0')
 	{
@@ -42,7 +42,7 @@ char *built_in(char *input, char **environment)
 	if (_strcmp(newstr, "env") == 0 && newstr[0] != '\0')
 	{
 		while (*(environment + k) != NULL)
-		{	
+		{
 			length = _strlen(*(environment + k));
 			write(STDOUT_FILENO, *(environment + k), length);
 			write(STDOUT_FILENO, "\n", 1);
