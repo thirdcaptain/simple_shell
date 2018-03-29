@@ -9,7 +9,7 @@ The goal for this project was to build a UNIX command line interpreter that can 
 | Filename | Description |
 | ------------- |:-------------:|
 | main.c | entry point source file |
-| getenv.c | searches the environment for a given string |
+| _getenv.c | searches the environment for a given string |
 | _strdup.c | creates a duplicate of a string |
 | append.c | appends user input to path environment directory |
 | built-in.c | chops newline and executes exit and env built-in functionality |
