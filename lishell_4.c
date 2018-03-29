@@ -28,13 +28,13 @@ int main(int __attribute__((unused))ac, char **argv, char **env)
 		args = NULL;
 		bufsize = 0;
 		characters = 0;
-		write(STDOUT_FILENO, "$ ", 2);
+		write(STDIN_FILENO, "$ ", 2);
 		characters = getline(&buffer, &bufsize, stdin);
 		if (characters == EOF)
 		{
 			free(path);
 			free(buffer);
-			write(STDOUT_FILENO, "\n", 1);
+			write(STDERR_FILENO, "\n", 1);
 			exit(0);
 		}
 
