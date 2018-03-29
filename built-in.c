@@ -27,14 +27,13 @@ char *built_in(char *input, char **environment)
 		j++;
 	i -= j;
 	newstr = malloc(sizeof(char) * i);
-	while(*(input + j) != '\0')
+	while (*(input + j) != '\0')
 	{
 		newstr[a] = (input[j]);
 		a++;
 		j++;
 	}
 	newstr[a] = '\0';
-
 	if (_strcmp(newstr, "exit") == 0 && newstr[0] != '\0')
 	{
 		exit(0);
@@ -49,6 +48,5 @@ char *built_in(char *input, char **environment)
 			k++;
 		}
 	}
-
 	return (newstr);
 }
