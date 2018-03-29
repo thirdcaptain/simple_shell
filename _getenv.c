@@ -6,7 +6,7 @@
  *
  * Return: string that contains name
 */
-char *_getenv(const char *name)
+char *_getenv(const char *name, char **environ)
 {
 	int i = 0, j = 0, k = 0, m = 0;
 	char *str;

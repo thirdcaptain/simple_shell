@@ -21,7 +21,7 @@ int main(int __attribute__((unused))ac, char **argv, char **env)
 
 	while (1)
 	{
-		path = _getenv("PATH");
+		path = _getenv("PATH", env);
 		path_dirs = print_dir(path);
 
 		buffer = NULL;
@@ -35,7 +35,7 @@ int main(int __attribute__((unused))ac, char **argv, char **env)
 			free(path);
 			free(buffer);
 			write(STDOUT_FILENO, "\n", 1);
-			exit(1);
+			exit(0);
 		}
 
 		buffer = built_in(buffer, env);

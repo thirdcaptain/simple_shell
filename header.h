@@ -10,10 +10,8 @@
 #include <sys/types.h>
 #include <signal.h>
 
-extern char **environ;
-
-int _strlen(char *str); 
-char *_getenv(const char *name);
+int _strlen(char *str);
+char *_getenv(const char *name, char **environ);
 char **print_dir(char *str);
 char *append(char *path, char *name);
 char *is_exec(char **path, char *name);
