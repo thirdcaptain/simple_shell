@@ -23,7 +23,6 @@ int main(int __attribute__((unused))ac, char **argv, char **env)
 	{
 		path = _getenv("PATH", env);
 		path_dirs = print_dir(path);
-
 		buffer = NULL;
 		args = NULL;
 		bufsize = 0;
