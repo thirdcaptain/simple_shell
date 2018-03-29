@@ -1,7 +1,7 @@
 #include "header.h"
 
 /**
- * is_exec - checks if file exists
+ * is_exec - checks if file exists and is executable
  * @path: takes in matrix of strings
  * @name: string to check access against
  *
@@ -18,7 +18,7 @@ char *is_exec(char **path, char *name)
 		str = append(*path, name);
 		if (access(name, F_OK) == 0 && access(name, X_OK) == 0)
 			return (name);
-		if (access(str, F_OK) != -1 && access(str, X_OK) == 0)
+		if (access(str, F_OK) == 0 && access(str, X_OK) == 0)
 			return (str);
 		path++;
 	}
