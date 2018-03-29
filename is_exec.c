@@ -16,9 +16,9 @@ char *is_exec(char **path, char *name)
 	while (*path)
 	{
 		str = append(*path, name);
-		if (access(name, F_OK) != -1)
+		if (access(name, F_OK) == 0 && access(name, X_OK) == 0)
 			return (name);
-		if (access(str, F_OK) != -1)
+		if (access(str, F_OK) != -1 && access(str, X_OK) == 0)
 			return (str);
 		path++;
 	}
