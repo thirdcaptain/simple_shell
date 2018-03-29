@@ -41,7 +41,12 @@ int main(int __attribute__((unused))ac, char **argv, char **env)
 		}
 
 		buffer = built_in(buffer, env);
-
+		if (buffer == NULL)
+		{
+			free(path);
+			free(path_dirs);
+			free(buffer);
+		}
 		args = ret_array(buffer);
 
 		filename = is_exec(path_dirs, buffer);

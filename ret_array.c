@@ -6,7 +6,7 @@
  *
  * Return: Number of tokens
  */
-
+/*
 int token_count(char *str)
 {
 	int count = 0;
@@ -24,7 +24,7 @@ int token_count(char *str)
 	free(duplicate);
 	return (count);
 }
-
+*/
 
 /**
  * ret_array - for each word of a string received from getline
@@ -40,7 +40,7 @@ char **ret_array(char *string)
 	char **array;
 	char *token;
 
-	num_token = token_count(string);
+	num_token = 20; /*token_count(string);*/
 	array = malloc((sizeof(char *) * (num_token + 1)));
 	token = strtok(string, " ");
 	while (token != NULL)

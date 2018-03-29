@@ -25,7 +25,7 @@ char *append(char *path, char *name)
 	}
 	lengths = pathlen + namelen;
 
-	tmp = malloc(sizeof(char) * lengths + 2);
+	tmp = malloc((sizeof(char) * lengths) + 3);
 	if (tmp == NULL)
 		return (NULL);
 

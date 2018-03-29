@@ -26,7 +26,7 @@ char *built_in(char *input, char **environment)
 	while (*(input + j) == ' ')
 		j++;
 	i -= j;
-	newstr = malloc(sizeof(char) * i);
+	newstr = malloc((sizeof(char) * i) + 1);
 	while (*(input + j) != '\0')
 	{
 		newstr[a] = (input[j]);
@@ -48,5 +48,6 @@ char *built_in(char *input, char **environment)
 			k++;
 		}
 	}
+	free(input);
 	return (newstr);
 }
