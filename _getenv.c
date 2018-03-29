@@ -3,6 +3,7 @@
 /**
  * _getenv - searches the environment for given string
  * @name: name to search for in environment
+ * @environ: environmental variables matrix
  *
  * Return: string that contains name
 */
