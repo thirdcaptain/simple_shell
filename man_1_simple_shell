@@ -1,4 +1,5 @@
 .TH hsh 1 "28 March 2018" "1" "Shell Manual"
+
 .SH NAME
 hsh - Holberton SHell
 
@@ -10,6 +11,17 @@ The hsh shell echoes the functionality of the GNU Bourne-Again SHell
 .SH DESCRIPTION
 .B Hsh 
 is an sh-compatible command language interpreter that executes commands read from the standard input or from a file. 
+
+.SH EXAMPLES
+.RS 3
+$ pwd
+
+/home/vagrant/simple_shell
+
+$ pwd -L -P
+
+/Users/name_of_user
+.RE
 
 .SH ENVIRONMENT
 .RS 3
