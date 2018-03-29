@@ -8,7 +8,7 @@ The goal for this project was to build a UNIX command line interpreter that can 
 ## File Descriptions
 | Filename | Description |
 | ------------- |:-------------:|
-| main.c | entry point source file |
+| lishell_4.c | entry point source file |
 | _getenv.c | searches the environment for a given string |
 | _strdup.c | creates a duplicate of a string |
 | append.c | appends user input to path environment directory |
