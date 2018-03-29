@@ -1,3 +1,5 @@
+#define _XOPEN_SOURCE_700
+#define _GNU_SOURCE
 #include "header.h"
 
 /**
