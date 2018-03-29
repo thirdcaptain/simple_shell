@@ -34,7 +34,8 @@ int main(int __attribute__((unused))ac, char **argv, char **env)
 		{
 			free(path);
 			free(buffer);
-			write(STDERR_FILENO, "\n", 1);
+			if (isatty(STDIN_FILENO) == 1)
+				write(STDERR_FILENO, "\n", 1);
 			exit(0);
 		}
 
