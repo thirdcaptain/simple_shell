@@ -10,8 +10,9 @@
 
 char *built_in(char *input, char **environment)
 {
-	int i = 0, k = 0;
+	int i = 0, k = 0, j = 0, a = 0;
 	size_t length = 0;
+	char *newstr;
 
 	if (input == NULL)
 	{
@@ -22,11 +23,23 @@ char *built_in(char *input, char **environment)
 		i++;
 	*(input + i) = '\0';
 
-	if (_strcmp(input, "exit") == 0 && input[0] != '\0')
+	while (*(input + j) == ' ')
+		j++;
+	i -= j;
+	newstr = malloc(sizeof(char) * i);
+	while(*(input + j) != '\0')
+	{
+		newstr[a] = (input[j]);
+		a++;
+		j++;
+	}
+	
+
+	if (_strcmp(newstr, "exit") == 0 && newstr[0] != '\0')
 	{
 		exit(0);
 	}
-	if (_strcmp(input, "env") == 0 && input[0] != '\0')
+	if (_strcmp(newstr, "env") == 0 && newstr[0] != '\0')
 	{
 		while (*(environment + k) != NULL)
 		{	
@@ -37,5 +50,5 @@ char *built_in(char *input, char **environment)
 		}
 	}
 
-	return (input);
+	return (newstr);
 }
