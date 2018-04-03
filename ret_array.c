@@ -6,25 +6,33 @@
  *
  * Return: Number of tokens
  */
-/*
+
+
 int token_count(char *str)
 {
-	int count = 0;
-	char *token;
-	char *duplicate;
+	int count = 0, i = 0;
+	char *dup;
 
-	duplicate = _strdup(str);
-
-	token = strtok(duplicate, " ");
-	while (token != NULL)
+	dup = _strdup(str);
+	if (dup[i] == '\0')
+		return (1);
+	while (dup[i] != '\0')
 	{
-		count++;
-		token = strtok(NULL, " ");
+		while (dup[i] == ' ')
+		{
+			i++;
+		}
+		if (dup[i] != '\0')
+			count++;
+		while (dup[i] != ' ' && dup[i] != '\0')
+		{
+			i++;
+		}
 	}
-	free(duplicate);
+	free(dup);
 	return (count);
 }
-*/
+
 
 /**
  * ret_array - for each word of a string received from getline
@@ -40,8 +48,10 @@ char **ret_array(char *string)
 	char **array;
 	char *token;
 
-	num_token = 20; /*token_count(string);*/
+	num_token = token_count(string);
 	array = malloc((sizeof(char *) * (num_token + 1)));
+	if (array == NULL)
+		return (NULL);
 	token = strtok(string, " ");
 	while (token != NULL)
 	{
